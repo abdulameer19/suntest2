@@ -1,11 +1,8 @@
 import Data from "../models/data";
 import { Request, Response } from "express";
 
-
-
 const listData=async(req:Request,res:Response)=>{
-    const {c,dateFrom,dateTo,range}=req.query   
-
+const {c,dateFrom,dateTo,range}=req.query   
 try{
     const data=await Data.aggregate([
 {
@@ -22,7 +19,6 @@ $group:
     $sort:{_id:1}
 }
 ])
-
 // Logic for sampling data
     const rang = range;
     const result: Array<week> = [];
@@ -42,21 +38,16 @@ $group:
      obj.weekStart = data[i - Number(rang)]._id;
     obj.weekEnd = data[i-1]._id;
      result.push(obj)
-    
      obj = {NumberDosesReceived: 0};
       }
     }
-
-    
-//console.log(result)
+    //console.log(result)
     res.status(200).json({"summary":result})
 
 }
 catch(error){
-    
-    res.status(404).json({"Error":"Content not found"})
+   res.status(404).json({"Error":"Content not found"})
 }
-
 } 
 
 export {listData};
