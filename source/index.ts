@@ -1,4 +1,4 @@
-import express from 'express';
+import express,{Request,Response} from 'express';
 import { json } from 'body-parser';
 import dotenv from 'dotenv';
 import rateLimit from  'express-rate-limit';
@@ -23,6 +23,12 @@ app.use(
 )
 
 
+app.get("/api/user",(req:Request,res:Response)=>{
+
+res.status(200).send("Hello")
+
+})
+
 app.use("",dataRoute);
 
 //Port Listening Code Port Running on 5050
@@ -30,3 +36,6 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
 });
+
+
+module.exports = app.listen(3000);
