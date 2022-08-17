@@ -1,0 +1,4 @@
+End Point: http://localhost:5050/api/data?c=AT&dateFrom=2021-W05&dateTo=2021-W49&range=5
+
+
+Data set:  data is between 2021-w05 to 2021-50
